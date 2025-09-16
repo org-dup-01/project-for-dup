@@ -25,4 +25,5 @@ jobs:
           GH_TOKEN: ${{ secrets.DUP_REPO_TOKEN }}
         run: |
           git remote add target https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPO}.git
+          git remote -v
           git push target ${TARGET_BRANCH} --force
