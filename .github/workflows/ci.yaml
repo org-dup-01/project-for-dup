@@ -22,9 +22,8 @@ jobs:
         env:
           TARGET_REPO: org-dup-02/project-for-dup
           TARGET_BRANCH: main
-          GH_TOKEN: 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
+          GH_TOKEN: ${{ secrets.DUP_REPO_TOKEN }}
         run: |
           git remote add target https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPO}.git
-          git remote -v
-          echo ${GH_TOKEN}
+          git ls-remote target
           git push target ${TARGET_BRANCH} --force
