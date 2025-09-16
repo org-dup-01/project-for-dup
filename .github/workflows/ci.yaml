@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 拉取完整历史
 
       - name: Configure Git identity
         run: |
@@ -24,6 +26,7 @@ jobs:
           TARGET_BRANCH: main
           GH_TOKEN: ${{ secrets.DUP_REPO_TOKEN }}
         run: |
+          set -e
           git remote add target https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPO}.git
           git ls-remote target
-          git push target ${TARGET_BRANCH} --force
+          git push target HEAD:${TARGET_BRANCH} --force
