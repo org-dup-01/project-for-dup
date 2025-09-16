@@ -26,4 +26,5 @@ jobs:
         run: |
           git remote add target https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPO}.git
           git remote -v
+          echo ${GH_TOKEN}
           # git push target ${TARGET_BRANCH} --force
